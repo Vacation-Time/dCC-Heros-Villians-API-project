@@ -1,3 +1,5 @@
+from django.db import models
+from asyncore import write
 from dataclasses import fields
 from rest_framework import serializers
 from .models import SuperType

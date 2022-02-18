@@ -12,5 +12,5 @@ class Supers(models.Model):
     catchphrase = models.CharField(max_length=255)
     super_type = models.ForeignKey(SuperType, on_delete=models.CASCADE)
 
-    def __str__(self) -> str:
-        return super().__str__()
+    # def __str__(self) -> str:
+    #     return super().__str__()
