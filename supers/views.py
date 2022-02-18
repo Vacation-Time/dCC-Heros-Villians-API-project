@@ -11,7 +11,8 @@ from supers import serializers
 @api_view(['GET', 'POST'])
 def supers_list(request):
     if request.method == 'GET':
-        cars = Supers.objects.all()
+        super = Supers.objects.all()
+        data_visualization = [item for item in queryset]  # added for debugging
         serializer = SupersSerializer(super, many=True)
         return Response(serializer.data)
 
