@@ -2,7 +2,9 @@ from django.shortcuts import get_object_or_404
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+import super_type
 from super_type.models import SuperType
+import supers
 from .serializers import SupersSerializer
 from .models import Supers
 from supers import serializers
@@ -22,46 +24,21 @@ def supers_list(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
-@api_view(['GET'])
+@api_view(['GET', 'PUT'])
 def supers_detail(request, pk):
-    try:
-        super = Supers.objects.get(pk=pk)
+    super = get_object_or_404(Supers, pk=pk)
+    if request.method == 'GET':
         serializer = SupersSerializer(super)
         return Response(serializer.data)
-
-    except Supers.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
+    elif request.method == 'PUT':
+        serializer = SupersSerializer(super, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
 
 
 ##################################################
-# @api_view(['GET', 'POST'])
-# def supers_list(request):
-#     if request.method == 'GET':
-#         super = Supers.objects.all()
-#         # data_visualization = [item for item in queryset]  # added for debugging
-#         serializer = SupersSerializer(super, many=True)
-#         return Response(serializer.data)
 
-#     elif request.method == 'POST':
-#         serializer = SupersSerializer(data=request.data)
-#         serializer.is_valid(raise_exception=True)
-#         serializer.save()
-#         return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-# @api_view(['GET', 'PUT', 'DELETE'])
-# def supers_detail(request, pk):
-#     super = get_object_or_404(Supers, pk=pk)
-#     if request.method == 'GET':
-#         serializer = SupersSerializer(super)
-#         return Response(serializer.data)
-#     elif request.method == 'PUT':
-#         serializer = SupersSerializer(super, data=request.data)
-#         serializer.is_valid(raise_exception=True)
-#         serializer.save()
-#         return Response(serializer.data)
-#     elif request.method == 'DELETE':
-#         super.delete()
-#         return Response(status=status.HTTP_204_NO_CONTENT)
 
 # @api_view(['GET'])
 # def supers_list(request):
