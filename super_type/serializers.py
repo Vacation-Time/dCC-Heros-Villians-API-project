@@ -10,4 +10,3 @@ class SuperTypeSerializer(serializers.ModelSerializer):
         model = SuperType
         fields = ['id', 'type']
         depth = 1
-    super_type_id = serializers.IntegerField(write_only=True)
