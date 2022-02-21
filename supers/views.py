@@ -14,6 +14,7 @@ from supers import serializers
 def supers_list(request):
     if request.method == 'GET':
         supers = Supers.objects.all()
+        # data_visualization = [item for item in supers]  # for debugging
         serializer = SupersSerializer(supers, many=True)
         return Response(serializer.data)
 
@@ -28,6 +29,7 @@ def supers_list(request):
 def supers_detail(request, pk):
     super = get_object_or_404(Supers, pk=pk)
     if request.method == 'GET':
+        # data_visualization = [item for item in super]  # for debugging
         serializer = SupersSerializer(super)
         return Response(serializer.data)
     elif request.method == 'PUT':
@@ -43,21 +45,33 @@ def supers_detail(request, pk):
 ##################################################
 
 
-# @api_view(['GET'])
-# def supers_list(request):
+@api_view(['GET'])
+def supers_list(request):
 
-#     super_type_param = request.query_params.get('super_type')
-#     sort_param = request.query_params.get('sort')
+    super_type_param = request.query_params.get('type')
 
-#     supers = SuperType.objects.all()
+    supers = Supers.objects.all()
 
-#     # Truthy: if contains value then it is True
-#     # if does not contain value then it is False
-#     if super_type_param:
-#         supers = supers.filter(supers_name=super_type_param)
+    # print(super_type_param)
+    # print(sort_param)
 
-#     if sort_param:
-#         supers = supers.order_by(sort_param)
+    # Truthy: if contains value then it is True
+    # if does not contain value then it is False
+    if super_type_param == 'hero':
+        heroes = supers.filter(super_type__type='Hero')
+        serializer = SupersSerializer(heroes, many=True)
+        return Response(serializer.data)
+    elif super_type_param == 'villain':
+        villains = supers.filter(super_type__type='Villain')
+        serializer = SupersSerializer(villains, many=True)
+        return Response(serializer.data)
+    elif super_type_param == 'something_inbetween':
+        something_inbetween = supers.filter(
+            super_type__type='Something In-Between')
+        serializer = SupersSerializer(something_inbetween, many=True)
+        return Response(serializer.data)
+    else:
 
-#     serializer = SupersSerializer(supers, many=True)
-#     return Response(serializer.data)
+        # data_visualization = [item for item in supers_list]  # for debugging
+        serializer = SupersSerializer(supers, many=True)
+        return Response(serializer.data)

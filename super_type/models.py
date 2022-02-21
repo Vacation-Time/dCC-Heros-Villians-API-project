@@ -8,5 +8,6 @@ from .models import *
 class SuperType(models.Model):
     type = models.CharField(max_length=255)
 
-    # def __str__(self) -> str:
-    #     return super().__str__()
+
+def __str__(self):  # for debugging
+    return f'{self.type}'
