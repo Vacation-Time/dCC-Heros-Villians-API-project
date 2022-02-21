@@ -91,12 +91,12 @@
 					"response": []
 				},
 				{
-					"name": "Get_Super_By_Id",
+					"name": "Get_All_Something_In-Between (Param)",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/supers/9/",
+							"raw": "http://127.0.0.1:8000/api/supers/?type=something_inbetween",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -108,7 +108,37 @@
 							"path": [
 								"api",
 								"supers",
-								"9",
+								""
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "something_inbetween"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_Super_By_Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/supers/8/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"supers",
+								"8",
 								""
 							]
 						}
@@ -155,7 +185,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n     \"id\": 4,\r\n    \"name\": \"That Villain\",\r\n    \"alter_ego\": \"That person\",\r\n    \"primary_ability\": \"That Thing\",\r\n    \"secondary_ability\": \"That Other Thing\",\r\n    \"catchphrase\": \"\\\"That's what it is.\\\"\",\r\n    \"super_type\": 2\r\n}",
+							"raw": "{\r\n    \"id\": 4,\r\n    \"name\": \"That Villain\",\r\n    \"alter_ego\": \"That Person\",\r\n    \"primary_ability\": \"That Power\",\r\n    \"secondary_ability\": \"That Other Power\",\r\n    \"catchphrase\": \"\\\"I Serve Myself\\\"\",\r\n    \"super_type_id\": 3\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -187,6 +217,10 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://127.0.0.1:8000/api/supers/5/",
 							"protocol": "http",
@@ -229,7 +263,21 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "http://127.0.0.1:8000/api/super_type/0/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"super_type",
+								"0",
+								""
+							]
 						}
 					},
 					"response": []
@@ -241,7 +289,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "",
+							"raw": "{\r\n    \"id\": 4,\r\n    \"type\": \"This Type\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -249,7 +297,20 @@
 							}
 						},
 						"url": {
-							"raw": ""
+							"raw": "http://127.0.0.1:8000/api/super_type/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"super_type",
+								""
+							]
 						}
 					},
 					"response": []
@@ -260,7 +321,21 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "http://127.0.0.1:8000/api/super_type/0/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"super_type",
+								"0",
+								""
+							]
 						}
 					},
 					"response": []
@@ -271,7 +346,21 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "http://127.0.0.1:8000/api/super_type/0/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"super_type",
+								"0",
+								""
+							]
 						}
 					},
 					"response": []
